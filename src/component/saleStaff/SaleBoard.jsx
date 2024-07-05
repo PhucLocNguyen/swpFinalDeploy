@@ -35,7 +35,7 @@ function SaleBoard() {
    useEffect(()=>{
 loadDataToBoard();
 const newConnection = new signalR.HubConnectionBuilder()
-.withUrl('https://localhost:7103/Working')
+.withUrl('http://35.220.181.219:8888/Working')
 .withAutomaticReconnect()
 .build();
 

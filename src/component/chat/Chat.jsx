@@ -22,7 +22,7 @@ const [filterList, setFilterList] = useState([]);
 const [currentConversationId, setCurrentConversationId] = useState(null);
 const [conversation, setConversation] = useState({ conversationId: null });
 const connect = new signalR.HubConnectionBuilder()
-        .withUrl("https://localhost:7103/Chat") // Ensure this URL is correct
+        .withUrl("http://35.220.181.219:8888/Chat") // Ensure this URL is correct
         .withAutomaticReconnect()
         .build();
 const fetchConversations = async () => {
