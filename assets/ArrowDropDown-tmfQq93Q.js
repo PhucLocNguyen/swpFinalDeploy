@@ -1,0 +1,1 @@
+import{i as e}from"./styled-C3jJ_e4t.js";import{r as o}from"./createSvgIcon-Bust3YDQ.js";import{j as t}from"./index-VGU-9NUU.js";var r={},a=e;Object.defineProperty(r,"__esModule",{value:!0});var u=r.default=void 0,i=a(o()),p=t;u=r.default=(0,i.default)((0,p.jsx)("path",{d:"m7 10 5 5 5-5z"}),"ArrowDropDown");export{u as d};

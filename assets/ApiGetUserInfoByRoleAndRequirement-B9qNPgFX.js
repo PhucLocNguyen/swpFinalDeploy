@@ -1,1 +1,0 @@
-import{a as t}from"./instance-CBuQ1cLn.js";import{a}from"./AxiosConfigHeader-CNHt4vQr.js";const i=async({roleId:r,requirementId:o})=>{try{return(await t.get("/User/GetUserByRoleInRequirement",{axiosConfigHeader:a,params:{RoleFromInput:r,requirementId:o}})).data[0]}catch(e){console.log(">>> Api Get User By Role and Requirement Error : ",e)}};export{i as A};

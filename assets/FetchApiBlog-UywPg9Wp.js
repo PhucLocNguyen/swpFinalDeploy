@@ -1,0 +1,1 @@
+import{a}from"./instance-DZS3_tzi.js";import{a as s}from"./AxiosConfigHeader-CNHt4vQr.js";const c=async({pageSize:e,page:r})=>{try{return(await a.get("/Blog",{headers:{...s},params:{pageIndex:r,pageSize:e}})).data}catch(o){return console.error(o),[]}},p=async e=>{try{return(await a.get(`/Blog/${e}`)).data}catch(r){return console.error(r),[]}};export{c as F,p as a};

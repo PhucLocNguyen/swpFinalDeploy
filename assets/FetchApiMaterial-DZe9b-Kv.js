@@ -1,0 +1,1 @@
+import{a}from"./instance-DZS3_tzi.js";const o=async()=>{try{return(await a.get("/Material")).data}catch(r){return console.error(r),[]}},s=async r=>{try{return(await a.get(`/Material/${r}`)).data}catch(e){return console.error(e),[]}};export{o as F,s as a};
