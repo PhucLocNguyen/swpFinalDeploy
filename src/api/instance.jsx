@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-   baseURL: 'http://35.220.181.219:8888/api'
+   baseURL: 'https://app-swp391-sp24-dev-001.azurewebsites.net/api'
 })
