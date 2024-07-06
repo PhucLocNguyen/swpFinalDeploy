@@ -1,1 +1,0 @@
-import{a}from"./instance-DZS3_tzi.js";import{a as i}from"./AxiosConfigHeader-CNHt4vQr.js";import{B as e}from"./index-VGU-9NUU.js";const m=async(r,o)=>{try{const t={usersId:o,requirementId:r},s=await a.post("/UserRequirement",t,i);return(s.status===200||s.status===201)&&e.success("Successful"),s.status}catch{e.error("Failed to join the order")}};export{m as P};
