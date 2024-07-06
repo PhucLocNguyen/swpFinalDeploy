@@ -22,7 +22,7 @@ const [filterList, setFilterList] = useState([]);
 const [currentConversationId, setCurrentConversationId] = useState(null);
 const [conversation, setConversation] = useState({ conversationId: null });
 const connect = new signalR.HubConnectionBuilder()
-        .withUrl("https://app-swp391-su24.azurewebsites.net/Chat") // Ensure this URL is correct
+        .withUrl("https://swp391-su24.azurewebsites.net/Chat") // Ensure this URL is correct
         .withAutomaticReconnect()
         .build();
 const fetchConversations = async () => {
@@ -43,7 +43,6 @@ useEffect(() => {
                     .then(() => console.log('Joined conversation', currentConversationId))
                     .catch(err => console.error('Failed to join conversation', err));
             }
-           
         })
         .catch(err => console.log('Connection failed: ', err));
 
@@ -51,7 +50,7 @@ useEffect(() => {
         console.log('Received message:', message);
         setMessages(prevMessages => [...prevMessages, message]);
     });
-    
+
     setConnection(connect);
 
     return () => {
@@ -93,16 +92,7 @@ useEffect(() => {
         
     }
 }, [currentConversationId]);
-useEffect(()=>{
-if(connection){
-    connection.on('LoadNewConversation',userTarget=>{
-        if(userTarget.userId2==UserId){
-            fetchConversations();
-        }
-})  
-}
-    
-},[connection])
+
 const sendMessage = async () => {
     if(message.trim().length>0){
 
