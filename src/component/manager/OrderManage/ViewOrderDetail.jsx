@@ -49,7 +49,7 @@ function ViewOrderDetailPopup({
   };
 
   return (
-    <motion.div initial={{opacity:0, x:10}} whileInView={{opacity:1, x:0}} transition={{ease:"linear", duration:0.3}} className="absolute z-10 top-0 left-0 right-0 bottom-0 py-[3rem] px-[3rem] min-h-[100vh] bg-[#f7f9fc]">
+    <motion.div initial={{opacity:0, x:10}} whileInView={{opacity:1, x:0}} className="absolute w-full z-10 top-0 left-0 right-0 bottom-0 py-[3rem] px-[3rem] h-max bg-[#f7f9fc]">
       <Tooltip title="back" sx={{}}>
         <IconButton
           onClick={(e) => {

@@ -4,9 +4,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Popover from '@mui/material/Popover';
 import MenuItem from '@mui/material/MenuItem';
 
-import ApiDeleteMasterGemstone from "../../../api/manager/ApiDeleteMasterGemstone";
-
-function MasterGemstoneRow({ data, setIsOpenUpdatePopup, setItemUpdate, isDelete, setIsDelete }) {
+function DesignRuleRow({ data, setIsOpenUpdatePopup, setItemUpdate}) {
    const [open, setOpen] = useState(null);
 
    const handleOpenMenu = (event) => {
@@ -17,41 +15,27 @@ function MasterGemstoneRow({ data, setIsOpenUpdatePopup, setItemUpdate, isDelete
       setOpen(null);
    };
 
-   const CallApi = async () => {
-      let id = data?.masterGemstoneId;
-      const respone = await ApiDeleteMasterGemstone(id);
-   }
-
-   const handleDeleteGemstone = async () => {
-      await CallApi();
-      handleCloseMenu();
-      setIsDelete(!isDelete);
-   }
-
    return (
       <>
 
          <div className="grid grid-cols-8 gap-x-[1rem] py-[1rem] px-[2.25rem] border-t-[1px] border-solid border-[#e9eaf3] cursor-pointer">
             <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.kind}</h2>
+               <h2 className="mx-6 text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.designRuleId}</h2>
             </div>
             <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.size}</h2>
+               <h2 className="mx-6 text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.typeOfJewellery?.name}</h2>
             </div>
             <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.clarity}</h2>
+               <h2 className="mx-6 text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.minSizeMasterGemstone}</h2>
             </div>
             <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.cut}</h2>
+               <h2 className="mx-6 text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.maxSizeMasterGemstone}</h2>
             </div>
             <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.weight}</h2>
+               <h2 className="mx-6 text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.minSizeJewellery}</h2>
             </div>
             <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.shape}</h2>
-            </div>
-            <div className="flex items-center">
-               <h2 className="text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.price}</h2>
+               <h2 className="mx-6 text-[14px] font-medium tracking-[0.06em] leading-[1.167em]">{data?.maxSizeJewellery}</h2>
             </div>
             <div className="flex items-center justify-center">
                <IconButton onClick={handleOpenMenu}>
@@ -76,16 +60,11 @@ function MasterGemstoneRow({ data, setIsOpenUpdatePopup, setItemUpdate, isDelete
                handleCloseMenu();
             }}>
 
-               Update Price
-            </MenuItem>
-
-            <MenuItem onClick={handleDeleteGemstone} sx={{ color: 'error.main' }}>
-
-               Delete
+               Update
             </MenuItem>
          </Popover>
       </>
    )
 }
 
-export default MasterGemstoneRow;
+export default DesignRuleRow;

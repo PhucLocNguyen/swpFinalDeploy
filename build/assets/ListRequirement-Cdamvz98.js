@@ -1,1 +1,0 @@
-import{a as o}from"./instance-CBuQ1cLn.js";import{a as s}from"./AxiosConfigHeader-CNHt4vQr.js";const p=async({pageSize:a,page:r,status:t})=>{try{return(await o.get("/Requirement",{axiosConfigHeader:s,params:{pageIndex:r,pageSize:a,Status:t}})).data}catch(e){console.log(e)}};export{p as A};
