@@ -78,7 +78,16 @@ useEffect(() => {
     }
 }, [connection, currentConversationId]);
 
-
+useEffect(()=>{
+    if(connection){
+        connection.on("LoadNewConversation", model=>{
+            var targetIdUser = model.userId2;
+            if(targetIdUser == UserId ){
+                 fetchConversations();
+            }
+        });
+    }
+},[connection])
 useEffect(() => {
     if (currentConversationId !== null) {
        
