@@ -22,7 +22,7 @@ const [filterList, setFilterList] = useState([]);
 const [currentConversationId, setCurrentConversationId] = useState(null);
 const [conversation, setConversation] = useState({ conversationId: null });
 const connect = new signalR.HubConnectionBuilder()
-        .withUrl("https://swp391-su24.azurewebsites.net/Chat") // Ensure this URL is correct
+        .withUrl("https://app-swp391-su24.azurewebsites.net/Chat") // Ensure this URL is correct
         .withAutomaticReconnect()
         .build();
 const fetchConversations = async () => {
