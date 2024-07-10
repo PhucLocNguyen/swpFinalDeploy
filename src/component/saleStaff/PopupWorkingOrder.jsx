@@ -76,8 +76,7 @@ function PopupWorkingOrder({data, handleDataUpdate, statusOptions}) {
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1, transition: { duration: 0.5 } }}
       onClick={(e) => e.stopPropagation()}
-      className="relative bg-[#fff] w-[45rem] rounded-[10px] h-max py-3"
-    >
+      className="relative bg-[#fff] w-[45rem] rounded-[10px] h-max py-3">
       <h2 className="text-[36px] text-center border-b mb-3">Requirement #{data.requirementId} detail</h2>
 
       <div className="h-[600px] overflow-y-auto">
