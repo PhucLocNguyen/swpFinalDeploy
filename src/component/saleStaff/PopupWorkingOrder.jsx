@@ -10,7 +10,7 @@ import useAuth from "../../hooks/useAuth";
 import CreateConversationJoin from "../../utils/CreateConversationJoin";
 import { PutApiRequirement } from "../../api/Requirements/PutApiRequirement";
 import {  FetchApiUserBasedRoleInRequirement } from "../../api/Requirements/FetchApiUser";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function PopupWorkingOrder({data, handleDataUpdate, statusOptions}) {
     const [designDetail, setDesignDetail]= useState({});
@@ -18,6 +18,8 @@ function PopupWorkingOrder({data, handleDataUpdate, statusOptions}) {
     const [isAllowed,setIsAllowed] = useState(false);
     const [staffNote, setStaffNote] = useState("");
     const [customerInformation, setCustomerInformation] = useState({});
+    const navigate = useNavigate();
+
     async function loadDesignDetail(designId){
         const getDesignById = await FetchApiDesignById(designId);
         setDesignDetail(getDesignById);
@@ -62,7 +64,12 @@ function PopupWorkingOrder({data, handleDataUpdate, statusOptions}) {
       };
     
       const debouncedOnChange = useCallback(debounce(HandleChangeData, 1000), []);
-    
+
+      async function ChatWithCustomer(e){
+        e.stopPropagation();
+        const conversationIdTarget = await CreateConversationJoin(UserId, customerInformation.usersId); 
+        navigate("/staff/chat",{ state: { conversationIdTarget }}) 
+      }
     return (  
 
 <motion.div
@@ -146,11 +153,9 @@ function PopupWorkingOrder({data, handleDataUpdate, statusOptions}) {
               Customer details
             </Typography>
             <Typography sx={{ color: 'text.secondary' }}>
-            <Link to="/staff/chat">
-                      <Button variant="contained" onClick={(e) => { e.stopPropagation(); CreateConversationJoin(UserId, customerInformation.usersId); }}>
+                      <Button variant="contained" onClick={ChatWithCustomer}>
                         Chat with customer
                       </Button>
-                        </Link>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
