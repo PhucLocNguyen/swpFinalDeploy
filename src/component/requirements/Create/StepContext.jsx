@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState, createContext } from "react";
 import { fetchApiDesignById } from "../../../api/FetchApiDesign";
 import { FetchApiDesignRuleById } from "../../../api/Requirements/FetchApiDesignRule";
@@ -102,7 +103,9 @@ export function StepContext({ children, designId, animate, scope }) {
   }, [isSubmit]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Or a spinner/loading component
+    return <div className="flex justify-center items-center w-full h-full" >
+    <CircularProgress />
+  </div>; // Or a spinner/loading component
   }
 
   return (
