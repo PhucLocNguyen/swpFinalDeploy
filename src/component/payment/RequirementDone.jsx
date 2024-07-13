@@ -14,7 +14,7 @@ import FormatDate from "../../utils/FormatDate";
 import { ApiGetWarrantyByRequirementId } from "../../api/warranty/ApiChangeWarranty";
 import useAuth from "../../hooks/useAuth";
 import { FetchSummaryPriceByRequirementId } from "../../api/Requirements/FetchApiRequirement";
-import {iconStaff} from "../../assets/icon/staffIcon.jpg";
+import iconStaff from "../../assets/icon/staffIcon.jpg";
 function RequirementDone({
   title,
   designDetail,

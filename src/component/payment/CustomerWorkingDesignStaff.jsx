@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FetchApiUserBasedRoleInRequirement } from "../../api/Requirements/FetchApiUser";
 import useAuth from "../../hooks/useAuth";
-import {iconStaff} from "../../assets/icon/staffIcon.jpg";
+import iconStaff from "../../assets/icon/staffIcon.jpg";
 
 function CustomerWorkingDesignStaff({ title, requirementDetail, status }) {
   const { UserId } = useAuth();

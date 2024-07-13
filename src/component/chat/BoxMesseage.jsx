@@ -1,4 +1,4 @@
-import {userIcon} from "../../assets/icon/staffIcon.jpg";
+import userIcon from "../../assets/icon/staffIcon.jpg";
 function BoxMessage({item, setCurrentConversationId, currentConversationId}) {
     console.log(item);
     return ( <div className={"flex items-center gap-3 border pl-3 cursor-pointer py-3 "+(item.conversationId==currentConversationId? "bg-gray-500 text-white": "")} onClick={()=>{setCurrentConversationId(item.conversationId)}}>

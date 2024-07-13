@@ -11,7 +11,7 @@ import { FetchApiUserBasedRoleInRequirement } from "../../api/Requirements/Fetch
 import useAuth from "../../hooks/useAuth";
 import CreateConversationJoin from "../../utils/CreateConversationJoin";
 import { FetchSummaryPriceByRequirementId } from "../../api/Requirements/FetchApiRequirement";
-import {iconStaff} from "../../assets/icon/staffIcon.jpg";
+import iconStaff from "../../assets/icon/staffIcon.jpg";
 function CustomerWaiting({
   title,
   designDetail,

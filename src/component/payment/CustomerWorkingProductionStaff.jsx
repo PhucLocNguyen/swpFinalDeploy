@@ -11,7 +11,7 @@ import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { FetchApiUserBasedRoleInRequirement } from "../../api/Requirements/FetchApiUser";
 import useAuth from "../../hooks/useAuth";
-import {iconStaff} from "../../assets/icon/staffIcon.jpg";
+import iconStaff from "../../assets/icon/staffIcon.jpg";
 function CustomerWorkingProductionStaff({ title, requirementDetail, status }) {
   const { UserId } = useAuth();
   const navigate = useNavigate();
