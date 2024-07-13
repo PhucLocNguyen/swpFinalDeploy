@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { summaryContext } from "./SummaryContext";
 
 function CustomerPayButton() {
-    console.log(moneyWillPay);
     const { total, requirementDetail, designDetail , payNow} = useContext(summaryContext);
     
     return ( <button onClick={(e)=>
