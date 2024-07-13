@@ -115,7 +115,7 @@ function CustomerPay({
               <div className="flex justify-between py-2 border-b border-gray-300 text-lg text-gray-900 font-semibold">
                 <p className="text-[20px]">Deposit 50%</p>
                 <p className="text-[20px]">
-                  -{formatVND(getSummary.Deposit)}  
+                  -{formatVND(getSummary.deposit)}  
                 </p>
               </div>
             </div>
@@ -123,7 +123,7 @@ function CustomerPay({
             <div className="flex justify-between py-2 border-b border-gray-300 text-lg text-gray-900 font-semibold">
                 <p className="text-[20px]">Pay the rest</p>
                 <p className="text-[20px]">
-                  {formatVND(getSummary.PayTheRest)} 
+                  {formatVND(getSummary.payTheRest)} 
                 </p>
               </div>
             </div>
