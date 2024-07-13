@@ -11,18 +11,16 @@ export function SummaryContext({children, requirementData, ChangeToggle, status,
     const [requirementDetail, setRequirementDetail] = useState(requirementData);
     console.log(requirementData);
 
-    async function payNow(moneyWillPay) {
+    async function payNow() {
         const paymentRequest = {
             "id": "string",
             "paymentContent": "Payment for order #" + requirementDetail.requirementId,
             "paymentCurrency": "VND",
             "paymentRefId": "string",
-            "requiredAmount": moneyWillPay,
             "paymentLanguage": "EN",
             "merchantId": "MERCHANT123",
             "paymentDestinationId": "DEST123",
             "paymentStatus": "Completed",
-            "paidAmount": moneyWillPay,
             "userId": Number(UserId),
             "requirementId": requirementDetail.requirementId
         };
