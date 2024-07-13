@@ -101,39 +101,37 @@ const [ dataSelected, setDataSelected] = useState({
           })
         );
       }
-  var selectedAlready={};
+  
       Promise.all(promises).then(() => {
         if (Object.keys(dataFetching).length > 0) {
-          selectedAlready={...dataFetching};
           setDataSelected(prevData => ({ ...prevData, ...dataFetching }));
         }
-      }).then(()=>{
-
-        let objectChange = {};
-        var isSelectedBefore = false;
-  
-        // toogle master gemstone & stones  visible or hidden
-        if(requirementData.masterGemstoneId==null && selectedAlready.MasterGemstone==null){
-          objectChange = {...objectChange, MasterGemstone: null};
-          var getSection = document.getElementById("MasterGemstone");
-          getSection.style.display="none";
-          isSelectedBefore = true;
-        }
-        if(requirementData.stonesId==null &&  selectedAlready.Stones==null){
-          objectChange = {...objectChange, Stones: null};
-  
-          var getSection = document.getElementById("Stones");
-          getSection.style.display="none";
-          isSelectedBefore = true;
-        }
-        if(isSelectedBefore){
-          setDataSelected({...dataSelected, ...objectChange});
-        }
       });
+      let objectChange = {};
+      var isSelectedBefore = false;
 
+      // toogle master gemstone & stones  visible or hidden
+      if(requirementData.masterGemstoneId==null){
+        objectChange = {...objectChange, MasterGemstone: null};
+        var getSection = document.getElementById("MasterGemstone");
+        getSection.style.display="none";
+        isSelectedBefore = true;
+      }
+      if(requirementData.stonesId==null){
+        objectChange = {...objectChange, Stones: null};
+
+        var getSection = document.getElementById("Stones");
+        getSection.style.display="none";
+        isSelectedBefore = true;
+      }
+      console.log(objectChange);
+      if(isSelectedBefore){
+        setDataSelected({...dataSelected, ...objectChange});
+      }
       
     
     },[]);
+    console.log(filterMasterGemStone);
     // filter the selection list when choose an option to filter
     useEffect(() => {
       var output = true;
@@ -148,6 +146,9 @@ const [ dataSelected, setDataSelected] = useState({
           return true;
         })});
         if(dataFilterLastMasterGemstone.length >0){
+          console.log(requirementData);
+          console.log(requirementData.selectedIndexMastergemstone);
+          console.log(dataFilterLastMasterGemstone);
           setMasterGemstoneObject(dataFilterLastMasterGemstone[requirementData.selectedIndexMastergemstone]);
           
           ShowMasterGemStone(dataFilterLastMasterGemstone[requirementData.selectedIndexMastergemstone],dataFilterLastMasterGemstone, setMasterGemstoneObject, setIndex, index);
