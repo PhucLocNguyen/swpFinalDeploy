@@ -17,10 +17,12 @@ export function SummaryContext({children, requirementData, ChangeToggle, status,
             "paymentContent": "Payment for order #" + requirementDetail.requirementId,
             "paymentCurrency": "VND",
             "paymentRefId": "string",
+            "requiredAmount": 0,
             "paymentLanguage": "EN",
             "merchantId": "MERCHANT123",
             "paymentDestinationId": "DEST123",
             "paymentStatus": "Completed",
+            "paidAmount": 0,
             "userId": Number(UserId),
             "requirementId": requirementDetail.requirementId
         };

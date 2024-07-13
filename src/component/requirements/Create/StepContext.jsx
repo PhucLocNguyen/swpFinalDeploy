@@ -78,7 +78,7 @@ export function StepContext({ children, designId, animate, scope }) {
         stonesId: requirementData.stonesId,
         masterGemstoneId: requirementData.masterGemstoneId,
         materialId: requirementData.material,
-      };
+      };  
 
       const postDesignChild = await PostApiDesign(dataToSubmit);
       const dataToSendRequirement = {
