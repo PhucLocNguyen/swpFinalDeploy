@@ -6,6 +6,7 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import formatVND from "../../utils/FormatCurrency";
 import { FetchSummaryPriceByRequirementId } from "../../api/Requirements/FetchApiRequirement";
 import { CircularProgress } from "@mui/material";
+import { PostApiConfirmPrice } from "../../api/Requirements/PostRequirement";
 function CustomerConfirmation({
   setStatus,
   status,
@@ -47,18 +48,7 @@ function CustomerConfirmation({
   };
   const acceptButton = async () => {
     if (status == "3") {
-      const updateStatusRequirement = await PutApiRequirement({
-        ...requirementDetail,
-        status: "4",
-        masterGemStonePriceAtMoment:
-          designDetail.masterGemstone != null
-            ? designDetail.masterGemstone?.price
-            : 0,
-        materialPriceAtMoment: designDetail.material?.price,
-        stonePriceAtMoment: 
-          designDetail.stone != null ? designDetail.stone?.price : 0,
-        totalMoney: getSummary.totalMoneyAnon,
-      });
+      const updateStatusRequirement = await PostApiConfirmPrice(requirementDetail.requirementId);
       if (updateStatusRequirement != null) {
         toast.success("Accept the price quote successful");
         setStatus("4");
@@ -182,8 +172,7 @@ function CustomerConfirmation({
           <button
             className="py-3 px-6 w-full bg-green-500 text-white hover:bg-green-700 rounded-md transition-all ease-linear"
             onClick={acceptButton}
-          >
-            Accept
+          >Accept
           </button>
         </motion.div>
       </div>
