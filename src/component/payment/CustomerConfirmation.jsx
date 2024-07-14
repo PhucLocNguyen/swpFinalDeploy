@@ -12,7 +12,6 @@ function CustomerConfirmation({
   title,
   designDetail,
   requirementDetail,
-  total,
 }) {
   const [getSummary, setSummary] = useState({});
   const [isLoading, setIsLoading] = useState(true);
