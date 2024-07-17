@@ -233,7 +233,7 @@ const [ dataSelected, setDataSelected] = useState({
     },[dataSelected,dataApiMasterGemStone]);
     // 2 list thay doi khi show ra FE
 useEffect(()=>{
-  const selectKind = new Set(filterMasterGemStone.map(item => item.kind));
+  const selectKind = new Set(dataApiMasterGemStone.map(item => item.kind));
         setKindMasterGemstone([...selectKind]);
 
   const selectSize = new Set(filterMasterGemStone.map(item => item.size));
