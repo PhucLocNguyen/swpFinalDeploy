@@ -88,7 +88,7 @@ function RejectDesignDetail() {
     };
   };
 
-  const handleSubmit = () => {
+  const handleSubmit =async () => {
     if (handleFileChange) {
       const data = {
         ...requirement,
@@ -98,9 +98,8 @@ function RejectDesignDetail() {
       const CallApi = async () => {
         const response = await ApiUpdateRequirement({ data, id });
       };
-      CallApi();
+      await CallApi();
       navigate("/staff/reject-design", { replace: true });
-      window.location.reload();
     }
   };
 
