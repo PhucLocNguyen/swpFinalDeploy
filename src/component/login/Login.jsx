@@ -7,6 +7,7 @@ import { LoginApi, LoginWithGoogle, RegisterApi } from '../../api/ApiLogin';
 import { useNavigate, useLocation } from 'react-router-dom';
 import InputPasswordConfirmation from './InputPasswordConfirmation';
 import GoogleIcon from '../../assets/icon/google.png';
+import { toast } from 'react-toastify';
 
 function Login() {
     const navigate = useNavigate();
@@ -83,26 +84,32 @@ function Login() {
         }
         var data = new FormData(form);
         const listState ={};
+        let output = true;
         await Object.entries(formData).forEach(([key, value]) => {
+            if(data.get(key)=="" && output){
+                toast.error("The field "+key+" cannot be empty");
+                output = false;
+               }
             listState[key] =data.get(key);
         });
-        var htmlCollection =[...e.target];
-        htmlCollection.forEach((element, index)=>{
-            if(element.tagName === "INPUT"){
-                element.value = "";
-                element.blur();
+        if(output){
+            var htmlCollection =[...e.target];
+            htmlCollection.forEach((element, index)=>{
+                if(element.tagName === "INPUT"){
+                    element.value = "";
+                    element.blur();
+                }
+            })
+            
+            const check = await RegisterApi(listState);
+            if(check){
+                const email = listState.email;
+                const username = listState.username;
+                const password = listState.password;
+                const passwordConfirm = listState.passwordConfirm;
+                navigate("/confirmation-account",{ state: { email, username, password, passwordConfirm} });
             }
-        })
-        
-        const check = await RegisterApi(listState);
-        if(check){
-            const email = listState.email;
-            const username = listState.username;
-            const password = listState.password;
-            const passwordConfirm = listState.passwordConfirm;
-            navigate("/confirmation-account",{ state: { email, username, password, passwordConfirm} });
         }
-        // navigate(from, { replace: true })
     }
    
     return (

@@ -15,14 +15,13 @@ function ConfirmationAccount() {
     const [valid, setValid] = useState(true);
 
     try {
-        const { email, username } = location.state;
+        const { email, username , password, passwordConfirm} = location.state;
         const navigate = useNavigate();
         const submitCode = async (e) => {
             e.preventDefault();
             const data = e.target[0].value;
             // Gửi dữ liệu tới backend để kiểm tra
             const sendingCode = await VerifyRegister(data);
-            console.log(sendingCode);
             if (sendingCode < 400) {
                 localStorage.removeItem('expiryTime');
                 localStorage.removeItem('currentUser');
@@ -36,12 +35,16 @@ function ConfirmationAccount() {
             // Gửi lại mã tới email và cập nhật thời gian hết hạn
             // Nếu thành công gửi lại mã
             const newExpiryTime = Date.now() + 300000; // 300000ms = 5 phút
-            const responseResend = await ResendCode();
+            
+            const responseResend = await ResendCode({...location.state});
             
             if(responseResend==200 ){
               localStorage.setItem('expiryTime', newExpiryTime);
+              setOpenResendCode(true);
               setTimeLeft(300); // Đặt lại thời gian đếm ngược
             }else{
+               localStorage.removeItem('expiryTime');
+               localStorage.removeItem('currentUser');
               toast.info("Register again to verify the code");
               navigate("/login", { replace: true });
             }
