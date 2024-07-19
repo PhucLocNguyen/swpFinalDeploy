@@ -18,6 +18,7 @@ export const statusOptionCustomer = [
   { code: 4, label: "Deposit the order" },
   { code: 5, label: "Waiting for design staff" },
   { code: 6, label: "Working with design staff" },
+  {code:-6,label:"Waiting for sale contact you in chat system"},
   { code: 7, label: "Confirm the design" },
   { code: -7, label: "Waiting for design staff to contact you in chat system" },
   { code: 8, label: "Waiting for production staff receive" },
