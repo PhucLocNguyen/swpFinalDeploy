@@ -40,7 +40,7 @@ function ConfirmationAccount() {
             
             if(responseResend==200 ){
               localStorage.setItem('expiryTime', newExpiryTime);
-              setOpenResendCode(true);
+              setOpenResendCode(false);
               setTimeLeft(300); // Đặt lại thời gian đếm ngược
             }else{
                localStorage.removeItem('expiryTime');
