@@ -20,9 +20,9 @@ function CustomerWaiting({
 }) {
   const { UserId } = useAuth();
   const navigate = useNavigate();
-  async function ChatWithStaff(e,staffId){
+  async function ChatWithStaff(e, saleStaffId){
     e.stopPropagation();
-    const conversationIdTarget = await CreateConversationJoin(UserId, staffId); 
+    const conversationIdTarget = await CreateConversationJoin(UserId,saleStaffId); 
     navigate("/chat",{ state: { conversationIdTarget }}) 
   }
   function ShowSummary({requirementDetail}){
@@ -122,7 +122,7 @@ function CustomerWaiting({
                   <Link to="/chat">
                     <Button
                       variant="contained"
-                      onClick={(e) => {ChatWithStaff(e, getSaleStaff.usersId)
+                      onClick={(e) => {ChatWithStaff(e)
                       }}
                     >
                       Chat
