@@ -103,12 +103,6 @@ function RejectDesignDetail() {
       window.location.reload();
     }
   };
-  async function ChatWithCustomer(e){
-    e.stopPropagation();
-    const conversationIdTarget = await CreateConversationJoin(UserId, customerInformation.usersId); 
-    navigate("/staff/chat",{ state: { conversationIdTarget }}) 
-  }
-  
 
   return (
     <>
@@ -260,50 +254,6 @@ function RejectDesignDetail() {
                   </table>
                 </div>
               </div>
-              <Accordion sx={{ borderRadius: "2.5rem", marginTop: "3rem" }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                  className="text-[24px]"
-                >
-                  <Typography
-                    variant="h3"
-                    sx={{ width: "33%", flexShrink: 0, fontSize: "24px" }}
-                  >
-                    Customer details
-                  </Typography>
-                  <Typography sx={{ color: "text.secondary" }}>
-                    
-                      <Button
-                        variant="contained"
-                        onClick={ChatWithCustomer}
-                      >
-                        Chat with customer
-                      </Button>
-                    
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={
-                        customerInformation.image != null
-                          ? customerInformation.image
-                          : "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=338&ext=jpg&ga=GA1.1.1141335507.1719273600&semt=ais_user"
-                      }
-                      className="w-[150px] rounded-full"
-                      alt=""
-                    />
-                    <div>
-                      <h4 className="text-[20px]">
-                        Customer name: {customerInformation.name}
-                      </h4>
-                      <h4>Email: {customerInformation.email}</h4>
-                    </div>
-                  </div>
-                </AccordionDetails>
-              </Accordion>
               {/* Note cua customer */}
               <div className=" my-[1.5rem] py-[2.5rem] px-[2.5rem] rounded-[30px] border-[1px] border-[#e9eaf3] border-solid bg-[white]">
                 <h2 className="text-[22px] mb-[1rem] font-bold leading-[1.273em]">
