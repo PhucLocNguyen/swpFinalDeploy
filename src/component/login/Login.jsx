@@ -75,6 +75,12 @@ function Login() {
         e.preventDefault();
         //reset cac field trong form
         const form = e.target;
+        if(localStorage.getItem('expiryTime')!=null){
+            localStorage.removeItem('expiryTime');
+        }
+        if(localStorage.getItem('currentUser')!=null){
+            localStorage.removeItem('currentUser');
+        }
         var data = new FormData(form);
         const listState ={};
         await Object.entries(formData).forEach(([key, value]) => {
@@ -92,7 +98,9 @@ function Login() {
         if(check){
             const email = listState.email;
             const username = listState.username;
-            navigate("/confirmation-account",{ state: { email, username } });
+            const password = listState.password;
+            const passwordConfirm = listState.passwordConfirm;
+            navigate("/confirmation-account",{ state: { email, username, password, passwordConfirm} });
         }
         // navigate(from, { replace: true })
     }
