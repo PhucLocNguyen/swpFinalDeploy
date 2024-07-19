@@ -1,34 +1,26 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Typography from "@mui/material/Typography";
 import ApiRequirementById from "../../api/manager/FetchApiRequirementById";
 import { fetchApiDesignById } from "../../api/FetchApiDesign";
-import formatVND from "../../utils/FormatCurrency";
 import ApiUpdateRequirement from "../../api/manager/ApiUpdateRequirement";
 import DeleteImage from "../../utils/DeleteImage.jsx";
 import UploadImage from "../../utils/UploadImage.jsx";
-import { FetchApiUserBasedRoleInRequirement } from "../../api/Requirements/FetchApiUser";
-import CreateConversationJoin from "../../utils/CreateConversationJoin";
-import useAuth from "../../hooks/useAuth";
 
 function RejectDesignDetail() {
   const folder = "Design3D";
   const navigate = useNavigate();
   const { id } = useParams(); // requirement id
-  const { UserId } = useAuth();
   const [requirement, setRequirement] = useState();
   const [design, setDesign] = useState();
   const [selectedFile, setSelectedFile] = useState(null);
-  const [customerInformation, setCustomerInformation] = useState({});
 
   // Thong tin form de dang len
   const fetchData = async () => {
@@ -40,25 +32,21 @@ function RejectDesignDetail() {
     const designRespone = await fetchApiDesignById(dataDesignId);
     setDesign(designRespone);
   };
-  async function loadCustomerDetail() {
-    const roleIdCustomer = 6;
-    const getCustomerByRequirement = await FetchApiUserBasedRoleInRequirement(
-      roleIdCustomer,
-      id
-    );
-    if (getCustomerByRequirement != null) {
-      setCustomerInformation(getCustomerByRequirement);
-    }
-  }
+ 
   useEffect(() => {
-    loadCustomerDetail();
-
     fetchData();
   }, []);
 
   const handleFileChange = async (event) => {
     const selectFile = event.target.files[0];
     if (selectFile) {
+      const fileType = selectFile.type;
+      const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+      if (!validImageTypes.includes(fileType)) {
+        toast.error('Please select a valid image file (JPEG, PNG, GIF).');
+        return;
+    }
       try {
         if (requirement.design3D !== "" && requirement.design3D != null) {
           await DeleteImage(requirement.design3D);
@@ -76,19 +64,7 @@ function RejectDesignDetail() {
     }
   };
 
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return (...args) => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
-  };
-
-  const handleSubmit =async () => {
+  const handleSubmit = async () => {
     if (handleFileChange) {
       const data = {
         ...requirement,

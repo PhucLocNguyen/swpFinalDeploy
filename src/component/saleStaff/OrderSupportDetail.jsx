@@ -17,11 +17,12 @@ import ApiUpdateRequirement from "../../api/manager/ApiUpdateRequirement";
 import CustomerAva from "../../assets/icon/staffIcon.jpg"
 import CreateConversationJoin from "../../utils/CreateConversationJoin";
 import { FetchApiUserBasedRoleInRequirement } from "../../api/Requirements/FetchApiUser";
+import useAuth from "../../hooks/useAuth";
 
 function OrderSupportDetail() {
   const navigate = useNavigate();
   const { id } = useParams(); // requirement id
-
+  const {UserId} = useAuth();
   const [requirement, setRequirement] = useState();
   const [design, setDesign] = useState();
   const [staffNote, setStaffNote] = useState("");

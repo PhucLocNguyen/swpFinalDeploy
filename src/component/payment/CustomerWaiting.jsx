@@ -22,7 +22,7 @@ function CustomerWaiting({
   const navigate = useNavigate();
   async function ChatWithStaff(e,staffId){
     e.stopPropagation();
-    const conversationIdTarget = await CreateConversationJoin (UserId, staffId); 
+    const conversationIdTarget = await CreateConversationJoin(UserId, staffId); 
     navigate("/chat",{ state: { conversationIdTarget }}) 
   }
   function ShowSummary({requirementDetail}){
